@@ -64,7 +64,7 @@ gulp.task('less', function () {
 
 	gulp.src(gCfg.sources.less)
 		.pipe(gulpif(gCfg.env === 'development', sourcemaps.init()))
-		.pipe(less({ compress : true }))
+		.pipe(less({compress: true}))
 		.pipe(gulpif(gCfg.env === 'development', sourcemaps.write()))
 		.pipe(gulp.dest(gCfg.getBuildDir('css')))
 		.pipe(gulp.dest(gCfg.getSrcDir('css')))

@@ -1,4 +1,4 @@
-# collectorMgr
+# Collector Mgr
 ## Pay Junction ThinkFul Capstone App
 
 ### About this Project
