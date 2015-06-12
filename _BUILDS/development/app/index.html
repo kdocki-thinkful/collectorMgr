@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <!--[if lt IE 7]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<html lang="en" ng-app="cmgrApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<html lang="en" ng-app="cmgrApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<html lang="en" ng-app="cmgrApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<html lang="en" ng-app="cmgrApp" class="no-js"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,39 +14,56 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+	<![endif]-->
+	<!--[if gt IE 8]><!-->
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+	<!--<![endif]-->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/app.css">
 	<script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
-<body>
+<body ng-controller="MainCtrl">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
 	your browser</a> to improve your experience.</p>
 <![endif]-->
-<header class="header group">
+<header class="header">
 	<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-		<a class="pure-menu-heading" href="">Your Site</a>
-
+		<a class="pure-menu-heading" href="#/"><i class="fa fa-briefcase"></i> CollectorMgr.com</a>
+		<form class="pure-form searchInput">
+			<input type="text" class="pure-input-rounded">
+			<button type="submit" class="pure-button pure-button-primary">Go</button>
+		</form>
 		<ul class="pure-menu-list">
-			<li class="pure-menu-item pure-menu-selected"><a href="#/view1" class="pure-menu-link">Home</a></li>
-			<li class="pure-menu-item"><a href="#/view2" class="pure-menu-link">Collections</a></li>
+			<li class="pure-menu-item pure-menu-selected"><a href="#/" class="pure-menu-link">Home</a></li>
+			<li class="pure-menu-item"><a href="#/collection" class="pure-menu-link">Collection</a></li>
 			<li class="pure-menu-item"><a href="#/favorites" class="pure-menu-link">Favorites</a></li>
 		</ul>
 	</div>
 </header>
 <main class="group">
-	<div ng-view></div>
+	<div ng-view autoscroll="true"></div>
+	<!--<div ng-view></div>-->
 </main>
-<footer class="group">
-	<div>Angular seed app: v<span app-version></span></div>
+<footer  class="footer l-box tac">
+	<p>Copyright &#169; CollectorMgr.com | All Rights Reserved</p>
 </footer>
-
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
-<script src="app.js"></script>
-<script src="view1/view1.js"></script>
-<script src="view2/view2.js"></script>
+<script src="bower_components/ngSmoothScroll/angular-smooth-scroll.min.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+<script src="home/home.js"></script>
+<script src="favorites/favorites.js"></script>
+<script src="collection/collection.js"></script>
+<script src="search/search.js"></script>
 <script src="components/version/version.js"></script>
 <script src="components/version/version-directive.js"></script>
 <script src="components/version/interpolate-filter.js"></script>
+<script src="app-lib.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

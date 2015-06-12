@@ -10,9 +10,9 @@ var gulp = require('gulp'),
 	connect = require('gulp-connect'),
 	uglify = require('gulp-uglify'),
 	minifyhtml = require('gulp-minify-html'),
-	clean = require('gulp-clean'),
 	sourcemaps = require('gulp-sourcemaps'),
 	less = require('gulp-less'),
+	del = require('del'),
 	gCfg = require('./_GULP/CONFIG');
 
 // </editor-fold>
@@ -31,6 +31,7 @@ gulp.task('build', ['envCheck', 'less', 'js', 'html', 'copy']);
 gulp.task('watch', ['build', 'connect'], function () {
 	gulp.watch(gCfg.sources.js, ['js']);
 	gulp.watch(gCfg.sources.less, ['less']);
+	gulp.watch(gCfg.getSrcDir('less/**/_*.less'), ['less']);
 	gulp.watch(gCfg.sources.html, ['html']);
 });
 
@@ -62,13 +63,17 @@ gulp.task('js', function () {
 // SASS Task ***********************************************************************************************************
 gulp.task('less', function () {
 
-	gulp.src(gCfg.sources.less)
-		.pipe(gulpif(gCfg.env === 'development', sourcemaps.init()))
-		.pipe(less({compress: true}))
-		.pipe(gulpif(gCfg.env === 'development', sourcemaps.write()))
-		.pipe(gulp.dest(gCfg.getBuildDir('css')))
-		.pipe(gulp.dest(gCfg.getSrcDir('css')))
-		.pipe(connect.reload());
+	del([gCfg.getBuildDir('css'), gCfg.getSrcDir('css')], function (err, paths) {
+		console.log('Deleted files/folders:\n', paths.join('\n'));
+		gulp.src(gCfg.sources.less)
+			.pipe(gulpif(gCfg.env === 'development', sourcemaps.init()))
+			.pipe(less({compress: true}))
+			.pipe(gulpif(gCfg.env === 'development', sourcemaps.write()))
+			.pipe(gulp.dest(gCfg.getBuildDir('css')))
+			.pipe(gulp.dest(gCfg.getSrcDir('css')))
+			.pipe(connect.reload());
+	});
+
 });
 
 // ProcessHTML Task ****************************************************************************************************
@@ -105,8 +110,9 @@ gulp.task('connect', function () {
 // Clean Build Folder **************************************************************************************************
 gulp.task('clean', function () {
 
-	return gulp.src(gCfg.getBuildDir())
-		.pipe(clean({force: true}));
+	del(gCfg.getBuildDir(), function (err, paths) {
+		console.log('Deleted files/folders:\n', paths.join('\n'));
+	});
 });
 
 // </editor-fold>

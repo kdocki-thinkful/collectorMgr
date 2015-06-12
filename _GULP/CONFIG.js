@@ -40,19 +40,22 @@ gCfg.sources = {
 		// Entry
 		gCfg.getSrcDir('app.js'),
 		// Views
-		gCfg.getSrcDir('view1/view1.js'),
-		gCfg.getSrcDir('view2/view2.js')
+		gCfg.getSrcDir('home/home.js'),
+		gCfg.getSrcDir('collection/collection.js'),
+		gCfg.getSrcDir('favorites/favorites.js')
 	],
 	// LESS source path vars
 	less: [
-		gCfg.getSrcDir('_less/*.less')
+		gCfg.getSrcDir('less/*.less'),
+		'!' + gCfg.getSrcDir('less/**/_*.less')
 	],
 
 	// HTML Sources to process
 	html: [
 		gCfg.getSrcDir('index.html'),
-		gCfg.getSrcDir('view1/*.html'),
-		gCfg.getSrcDir('view2/*.html')
+		gCfg.getSrcDir('home/*.html'),
+		gCfg.getSrcDir('collection/*.html'),
+		gCfg.getSrcDir('favorites/*.html')
 	],
 	// Files to Copy source path vars
 	copy: [
@@ -61,26 +64,21 @@ gCfg.sources = {
 		gCfg.getSrcDir('**/**/*.*'),
 
 		// Exclude pre-processor DIRs
-		'!' + gCfg.getSrcDir('**/**/_coffee'),
-		'!' + gCfg.getSrcDir('**/**/_coffee/**/**/'),
-		'!' + gCfg.getSrcDir('**/**/_scss'),
-		'!' + gCfg.getSrcDir('**/**/_scss/**/**/'),
-		'!' + gCfg.getSrcDir('**/**/_less'),
-		'!' + gCfg.getSrcDir('**/**/_less/**/**'),
-		'!' + gCfg.getSrcDir('**/**/_sass'),
-		'!' + gCfg.getSrcDir('**/**/_sass/**/**/'),
-		'!' + gCfg.getSrcDir('**/**/_slim'),
-		'!' + gCfg.getSrcDir('**/**/_slim/**/**/'),
+		'!' + gCfg.getSrcDir('less'),
+		'!' + gCfg.getSrcDir('less/**'),
 
 		// SRC DIRs to exclude
-		'!' + gCfg.getSrcDir('view1/**'),
-		'!' + gCfg.getSrcDir('view2/**'),
+		'!' + gCfg.getSrcDir('home/**'),
+		'!' + gCfg.getSrcDir('collection/**'),
+		'!' + gCfg.getSrcDir('favorites/**'),
 
 		// Individual files and folders to include / exclude
 		'!' + gCfg.getSrcDir('app.js'),
+		'!' + gCfg.getSrcDir('app-lib.js'),
 		'!' + gCfg.getSrcDir('index.html'),
-		'!' + gCfg.getSrcDir('view1/*.html'),
-		'!' + gCfg.getSrcDir('view2/*.html')
+		'!' + gCfg.getSrcDir('home/*.html'),
+		'!' + gCfg.getSrcDir('collection/*.html'),
+		'!' + gCfg.getSrcDir('favorites/*.html')
 	],
 
 	// JS Lib Order

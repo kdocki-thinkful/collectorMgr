@@ -1,6 +1,9 @@
 {
 	"globalstrict": true,
 	"globals": {
+		"document": true,
+		"smoothScroll": true,
+		"console": true,
 		"process": true,
 		"require": true,
 		"angular": false,
