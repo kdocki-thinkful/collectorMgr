@@ -1,8 +1,10 @@
 
-#homeSearchForm {
-	max-width: 500px;
+.homeSearchForm {
+	display: block;
+	max-width: 960px;
 	margin: 0 auto;
 	text-align: center;
+	padding: 2em;
 	form {
 		legend {
 			font-style: italic;
@@ -10,7 +12,7 @@
 			font-weight: 600;
 		}
 		input {
-			width: 250px !important;
+			max-width: 550px !important;
 			margin-bottom: 0 !important;
 		}
 	}
@@ -22,7 +24,7 @@
  */
 
 .splash-container {
-	background: @blue url("../img/comic-book-faces-opt.jpg") top left;
+	background: @blue url("../home/img/comic-book-faces-opt.jpg") top left;
 	z-index: 1;
 	overflow: hidden;
 	/* The following styles are required for the "scroll-over" effect */
@@ -31,6 +33,21 @@
 	top: 0;
 	left: 0;
 	position: fixed !important;
+}
+
+.hideSplashOverLay {
+	position: absolute;
+	top: 65px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 0;
+	transition: all 700ms;
+	&.darken {
+		background: rgba(0, 0, 0, .8);
+		z-index: 2;
+	}
+
 }
 
 .splash {
@@ -83,7 +100,8 @@
 	font-weight: 400;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
-	margin: 2em 0 1em;
+	margin: 1em 0 1em;
+	font-size: 2em;
 }
 
 /* This is a modifier class used when the content-head is inside a ribbon */

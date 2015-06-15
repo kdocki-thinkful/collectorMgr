@@ -1,4 +1,5 @@
 <div class="splash-container">
+	<div class="hideSplashOverLay" ng-class="{darken:homeCtrl.darkenSplash}"></div>
 	<div class="splash">
 		<h1 class="splash-head"><i class="fa fa-briefcase"></i> Collector Manager</h1>
 
@@ -7,116 +8,17 @@
 		</p>
 
 		<p>
-			<a scroll-to="quick-collection" offset="30"
-			   class="pure-button pure-button-primary cursorPointer">{{hasCollection ? 'My Collection' : 'Search'}}</a>
+			<a scroll-to="quick-collection" offset="30" callback-before="homeCtrl.darkenSlider"
+			   class="pure-button pure-button-primary cursorPointer">{{homeCtrl.collection.length>0 ? 'My Collection' : 'Search'}}</a>
 		</p>
 	</div>
 </div>
 <div class="content-wrapper" id="quick-collection">
 	<div class="content">
-		<div ng-if="hasCollection">
-			<h2 class="content-head tac">Some Items From Your Collection</h2>
-			<div class="pure-g">
-				<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-					<div class="comicBox">
-						<h3 class="content-subhead">
-							<i class="fa fa-rocket"></i>
-							Get Started Quickly
-						</h3>
-
-						<div class="group">
-							<img src="http://placehold.it/350x450" class="pure-img-responsive ">
-						</div>
-						<p>
-							Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
-							elementum.
-						</p>
-						<ul class="padleft20">
-							<li>Item</li>
-							<li>Item</li>
-							<li>Item</li>
-						</ul>
-						<button class="pure-button">More</button>
-					</div>
-				</div>
-				<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-					<div class="comicBox">
-						<h3 class="content-subhead">
-							<i class="fa fa-rocket"></i>
-							Get Started Quickly
-						</h3>
-
-						<div class="group">
-							<img src="http://placehold.it/350x450" class="pure-img-responsive ">
-						</div>
-						<p>
-							Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
-							elementum.
-						</p>
-						<ul class="padleft20">
-							<li>Item</li>
-							<li>Item</li>
-							<li>Item</li>
-						</ul>
-						<button class="pure-button">More</button>
-					</div>
-				</div>
-				<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-					<div class="comicBox">
-						<h3 class="content-subhead">
-							<i class="fa fa-rocket"></i>
-							Get Started Quickly
-						</h3>
-
-						<div class="group">
-							<img src="http://placehold.it/350x450" class="pure-img-responsive ">
-						</div>
-						<p>
-							Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
-							elementum.
-						</p>
-						<ul class="padleft20">
-							<li>Item</li>
-							<li>Item</li>
-							<li>Item</li>
-						</ul>
-						<button class="pure-button">More</button>
-					</div>
-				</div>
-				<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-					<div class="comicBox">
-						<h3 class="content-subhead">
-							<i class="fa fa-rocket"></i>
-							Get Started Quickly
-						</h3>
-
-						<div class="group">
-							<img src="http://placehold.it/350x450" class="pure-img-responsive ">
-						</div>
-						<p>
-							Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
-							elementum.
-						</p>
-						<ul class="padleft20">
-							<li>Item</li>
-							<li>Item</li>
-							<li>Item</li>
-						</ul>
-						<button class="pure-button">More</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div ng-if="!hasCollection" id="homeSearchForm">
-			<h2 class="content-head tac"><i class="fa fa-search"></i> Search For Some Items</h2>
-			<form class="pure-form">
-				<fieldset>
-					<legend>Search Comic Vine</legend>
-					<input id="homeWikiSearch" type="text" placeholder="Search">
-					<button type="submit" class="pure-button  pure-button-primary">Search</button>
-				</fieldset>
-			</form>
-		</div>
+		<!-- Slider Directive -->
+		<collection-slider slides-to-show="4" slide-pages="3" ng-if="homeCtrl.collection.length>0"></collection-slider>
+		<!--Search Directive -->
+		<search-form ng-if="homeCtrl.collection.length==0" class="homeSearchForm"></search-form>
 	</div>
 	<div class="ribbon homeRibbon l-box-lrg pure-g">
 		<div class="l-box-lrg tar pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">

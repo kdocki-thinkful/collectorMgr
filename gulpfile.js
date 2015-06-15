@@ -54,7 +54,7 @@ gulp.task('js', function () {
 		base: gCfg.getSrcDir()
 	})
 		.pipe(gulpif(gCfg.env === 'development', sourcemaps.init()))
-		.pipe(uglify())
+		.pipe(gulpif(gCfg.env === 'production', uglify()))
 		.pipe(gulpif(gCfg.env === 'development', sourcemaps.write()))
 		.pipe(gulp.dest(gCfg.getBuildDir()))
 		.pipe(connect.reload());

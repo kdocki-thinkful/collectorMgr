@@ -39,6 +39,7 @@ gCfg.sources = {
 	js: [
 		// Entry
 		gCfg.getSrcDir('app.js'),
+		gCfg.getSrcDir('app-lib.js'),
 		// Views
 		gCfg.getSrcDir('home/home.js'),
 		gCfg.getSrcDir('collection/collection.js'),
@@ -52,33 +53,34 @@ gCfg.sources = {
 
 	// HTML Sources to process
 	html: [
-		gCfg.getSrcDir('index.html'),
-		gCfg.getSrcDir('home/*.html'),
-		gCfg.getSrcDir('collection/*.html'),
-		gCfg.getSrcDir('favorites/*.html')
+		gCfg.getSrcDir('*.html'),
+		gCfg.getSrcDir('home/**/*.html'),
+		gCfg.getSrcDir('collection/**/*.html'),
+		gCfg.getSrcDir('favorites/**/*.html'),
+		gCfg.getSrcDir('components/directives/**/*.html')
 	],
 	// Files to Copy source path vars
 	copy: [
 
 		// Include everything
-		gCfg.getSrcDir('**/**/*.*'),
+		gCfg.getSrcDir('**/**'),
 
 		// Exclude pre-processor DIRs
 		'!' + gCfg.getSrcDir('less'),
 		'!' + gCfg.getSrcDir('less/**'),
 
 		// SRC DIRs to exclude
-		'!' + gCfg.getSrcDir('home/**'),
-		'!' + gCfg.getSrcDir('collection/**'),
-		'!' + gCfg.getSrcDir('favorites/**'),
 
 		// Individual files and folders to include / exclude
 		'!' + gCfg.getSrcDir('app.js'),
 		'!' + gCfg.getSrcDir('app-lib.js'),
 		'!' + gCfg.getSrcDir('index.html'),
-		'!' + gCfg.getSrcDir('home/*.html'),
-		'!' + gCfg.getSrcDir('collection/*.html'),
-		'!' + gCfg.getSrcDir('favorites/*.html')
+		'!' + gCfg.getSrcDir('home/home.html'),
+		'!' + gCfg.getSrcDir('home/*_test.js'),
+		'!' + gCfg.getSrcDir('collection/collection.html'),
+		'!' + gCfg.getSrcDir('collection/*_test.js'),
+		'!' + gCfg.getSrcDir('favorites/favorites.html'),
+		'!' + gCfg.getSrcDir('favorites/*_test.js')
 	],
 
 	// JS Lib Order
