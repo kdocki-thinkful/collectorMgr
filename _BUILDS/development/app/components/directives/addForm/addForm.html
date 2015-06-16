@@ -1,0 +1,32 @@
+<form class="pure-form pure-form-stacked" name="addForm" ng-submit="submit(addForm)" novalidate>
+	<fieldset>
+
+		<legend>Add Comic Form</legend>
+		<div ng-if="addForm.$submitted && addForm.$invalid" ng-messages="addForm.$invalid" class="errorContainer">
+			<p class="tac">All fields are required!<br>Please try again.</p>
+		</div>
+
+		<label for="issueName">Issue Name</label>
+		<input id="issueName" name="issueName" type="text" placeholder="Issue Name" required ng-model="addItem.issueName">
+
+		<label for="issueNumber">Issue Number</label>
+		<input id="issueNumber" name="issueNumber" type="text" placeholder="Issue Number" required  ng-model="addItem.issueNumber">
+
+		<label for="issueVolume">Volume</label>
+		<input id="issueVolume" name="issueVolume" type="text" placeholder="Volume"  ng-model="addItem.issueVolume">
+
+		<label for="characterName">Character Name</label>
+		<input id="characterName" name="characterName" type="text" placeholder="Character Name" required  ng-model="addItem.characterName">
+
+		<label for="dateAcquired">Date Acquired</label>
+		<input id="dateAcquired" name="dateAcquired" type="date" placeholder="Date Acquired" required  ng-model="addItem.issueName">
+
+		<label for="description">Description</label>
+		<textarea id="description" name="description" placeholder="Description"  ng-model="addItem.description"></textarea>
+
+		<label for="issueImage">Image</label>
+		<input id="issueImage" name="issueImage" type="file" placeholder="Image"  ng-model="addItem.issueImage">
+
+		<button type="submit" class="pure-button">Add Item to Collection</button>
+	</fieldset>
+</form>

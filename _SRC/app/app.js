@@ -9,6 +9,10 @@ angular.module('cmgrApp', [
 	'cmgrApp.search',
 	'cmgrApp.version'
 ])
+	// Config
+	.config(function($routeProvider, $httpProvider) {
+		$httpProvider.defaults.useXDomain = true;
+	})
 	// Constants
 	.constant('VERSION', 1)
 	.constant('MSG_NO_COLLECTION', 'Sorry you have no items in your collection.');
