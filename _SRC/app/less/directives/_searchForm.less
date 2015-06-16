@@ -16,6 +16,13 @@
 		padding: 0;
 		font-size: 12px;
 	}
+
+}
+
+.searchResults {
+	&.searching {
+		min-height: 150px;
+	}
 }
 
 .comicPreviewContainer {
@@ -29,6 +36,7 @@
 	-moz-perspective: 800px;
 	-o-perspective: 800px;
 	perspective: 800px;
+	text-align: center;
 }
 
 .comicPreview {
@@ -85,6 +93,7 @@
 .searchLoader {
 	display: inline-block;
 	position: relative;
+	margin-left: -100px;
 }
 
 .searchLoader > div {

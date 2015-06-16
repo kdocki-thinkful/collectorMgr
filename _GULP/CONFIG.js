@@ -43,7 +43,8 @@ gCfg.sources = {
 		// Views
 		gCfg.getSrcDir('home/home.js'),
 		gCfg.getSrcDir('collection/collection.js'),
-		gCfg.getSrcDir('favorites/favorites.js')
+		gCfg.getSrcDir('favorites/favorites.js'),
+		gCfg.getSrcDir('detail/detail.js')
 	],
 	// LESS source path vars
 	less: [
@@ -57,6 +58,7 @@ gCfg.sources = {
 		gCfg.getSrcDir('home/**/*.html'),
 		gCfg.getSrcDir('collection/**/*.html'),
 		gCfg.getSrcDir('favorites/**/*.html'),
+		gCfg.getSrcDir('detail/**/*.html'),
 		gCfg.getSrcDir('components/directives/**/*.html')
 	],
 	// Files to Copy source path vars

@@ -24,8 +24,8 @@ angular.module('appLibrary', [
 		};
 	})
 	// App Level Factories
-	.factory('cvRequest', [ '$http', '$q', 'CV_API_PREFIX', 'CV_API_KEY', 'CV_DEFAULT_LIMIT', 'CV_TYPE',
-		function($http, $q, CV_API_PREFIX, CV_API_KEY, CV_DEFAULT_LIMIT, CV_TYPE) {
+	.factory('cvRequest', [ '$http', '$q', 'CV_API_PREFIX', 'CV_API_KEY', 'CV_DEFAULT_LIMIT', 'CV_TYPE', 'localStorageService',
+		function($http, $q, CV_API_PREFIX, CV_API_KEY, CV_DEFAULT_LIMIT, CV_TYPE, localStorageService) {
 			return function(path, options, cache) {
 
 				// Return Promise
@@ -33,6 +33,7 @@ angular.module('appLibrary', [
 					url = CV_API_PREFIX + path + CV_API_KEY + CV_TYPE;
 
 				options.limit = options.limit || CV_DEFAULT_LIMIT;
+				options.json_callback = 'JSON_CALLBACK';
 
 				// HTTP Action
 				$http.jsonp(url, {
@@ -40,12 +41,15 @@ angular.module('appLibrary', [
 					cache : cache
 				})
 					.success(function(data) {
+						localStorageService.set('lastSearch', data);
 						defer.resolve(data);
 					})
 					.error(function() {
-						defer.resolve({
+						var err = {
 							error : 'API call error'
-						});
+						};
+						localStorageService.set('lastSearch', err);
+						defer.resolve(err);
 					});
 
 				// Return Promise
@@ -78,6 +82,9 @@ angular.module('appLibrary', [
 					return collection;
 				}
 			},
+			getCommic : function() {
+
+			},
 			addToCollection : function(item) {
 				var collection = localStorageService.get('collection') || [];
 				collection.push(item);
@@ -99,11 +106,30 @@ angular.module('appLibrary', [
 			templateUrl : '/components/directives/collectionSlider/collectionSlider.html'
 		};
 	} ])
-	.directive('searchForm', [ 'collectionService', 'cvRequest', function(collectionService, cvRequest) {
+	.directive('searchForm', [ 'collectionService', 'cvRequest', '$window', '$timeout', function(collectionService, cvRequest, $window, $timeout) {
 		return {
 			restrict : 'E',
 			templateUrl : '/components/directives/searchForm/searchForm.html',
 			link : function(scope, element, attrs) {
+
+				if( attrs.darkenOnScroll ) {
+					angular.element($window).bind("scroll", function(e) {
+						scope.darkenElement = this.pageYOffset !== 0;
+						angular.element('.searchFormInput').blur();
+						scope.$apply();
+					});
+				}
+
+				scope.darkenSlider = function(element) {
+
+					// Add set to true to add class to darken
+					scope.darkenElement = true;
+
+					// Set focus on search box
+					$timeout(function() {
+						angular.element('.searchFormInput').focus();
+					}, 500);
+				};
 
 				// Setup
 				scope.searching = false;
@@ -117,26 +143,16 @@ angular.module('appLibrary', [
 						scope.searchResults = [];
 						scope.searching = true;
 
-						var resourceType = scope.searchType,
-							resources = scope.searchType;
-
-						if( scope.searchType === 'any' ) {
-							resources = 'issue,character';
-							resourceType = scope.searchType;
-						} else {
-							resourceType = scope.searchType;
-							resources = scope.searchType;
-						}
-
-						var results = cvRequest('search', {
-							query : scope.searchString,
-							json_callback : 'JSON_CALLBACK',
-							limit : 1,
-							resource_type : resourceType,
-							resources : resources
-						});
+						var resources = scope.searchType === 'any' ? 'issue,character' : scope.searchType,
+							results = cvRequest('search', {
+								query : scope.searchString,
+								limit : 1,
+								resource_type : scope.searchType,
+								resources : resources
+							});
 
 						results.then(function(data) {
+							console.log(data.results[0]);
 							scope.searchResults = data.results;
 							scope.searching = false;
 						});
@@ -149,7 +165,7 @@ angular.module('appLibrary', [
 				scope.resetForm = function(form) {
 					scope.searching = false;
 					scope.searchResults = [];
-					scope.searchType = "Character";
+					scope.searchType = "any";
 					form.$setPristine();
 					form.$setUntouched();
 				};

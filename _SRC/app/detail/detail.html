@@ -1,7 +1,7 @@
 <div class="splash-container">
 	<div class="hideSplashOverLay" ng-class="{darken:darkenElement}"></div>
-	<div class="splash">
-		<h1 class="splash-head"><i class="fa fa-briefcase"></i> Collector Manager</h1>
+	<div class="comicBanner">
+		<h1 class="splash-head"><i class="fa fa-briefcase"></i> {{ comic.name }}</h1>
 
 		<p class="splash-subhead">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -9,17 +9,14 @@
 
 		<p>
 			<a scroll-to="quick-collection" offset="30" callback-before="homeCtrl.darkenSlider"
-			   class="pure-button pure-button-primary cursorPointer">{{homeCtrl.collection.length>0 ? 'My Collection' : 'Search'}}</a>
+			   class="pure-button pure-button-primary cursorPointer">More Info</a>
 		</p>
 	</div>
 </div>
 
 <div class="content-wrapper" id="quick-collection">
 	<div class="content">
-		<!-- Slider Directive -->
-		<collection-slider slides-to-show="4" slide-pages="3" ng-if="homeCtrl.collection.length>0"></collection-slider>
-		<!--Search Directive -->
-		<search-form ng-show="homeCtrl.collection.length==0" class="homeSearchForm" darken-on-scroll="true"></search-form>
+		<p>{{ comic.name }}</p>
 	</div>
 	<div class="ribbon homeRibbon l-box-lrg pure-g">
 		<div class="l-box-lrg tar pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">

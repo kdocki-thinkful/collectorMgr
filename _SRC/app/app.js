@@ -7,6 +7,7 @@ angular.module('cmgrApp', [
 	'cmgrApp.collection',
 	'cmgrApp.favorites',
 	'cmgrApp.search',
+	'cmgrApp.detail',
 	'cmgrApp.version'
 ])
 	// Config
