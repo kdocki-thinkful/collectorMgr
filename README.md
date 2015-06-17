@@ -3,7 +3,7 @@
 
 [![Code Climate](https://codeclimate.com/github/red2678/collectorMgr/badges/gpa.svg)](https://codeclimate.com/github/red2678/collectorMgr)
 [![Test Coverage](https://codeclimate.com/github/red2678/collectorMgr/badges/coverage.svg)](https://codeclimate.com/github/red2678/collectorMgr/coverage)
-[![Dependency Status](https://david-dm.org/bower/bower.svg)](https://david-dm.org/bower/bower)
+[![Dependency Status](https://gemnasium.com/red2678/collectorMgr.svg)](https://gemnasium.com/red2678/collectorMgr)
 ### About this Project
 ...
 
