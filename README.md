@@ -1,6 +1,6 @@
 # Collector Mgr
 ## Pay Junction ThinkFul Capstone App
-
+[![Build Status](https://travis-ci.org/red2678/collectorMgr.svg?branch=master)](https://travis-ci.org/red2678/collectorMgr)
 [![Code Climate](https://codeclimate.com/github/red2678/collectorMgr/badges/gpa.svg)](https://codeclimate.com/github/red2678/collectorMgr)
 [![Test Coverage](https://codeclimate.com/github/red2678/collectorMgr/badges/coverage.svg)](https://codeclimate.com/github/red2678/collectorMgr/coverage)
 [![Dependency Status](https://gemnasium.com/red2678/collectorMgr.svg)](https://gemnasium.com/red2678/collectorMgr)
