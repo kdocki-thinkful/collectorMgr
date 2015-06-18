@@ -9,7 +9,7 @@
 
 		<p>
 			<a scroll-to="quick-collection" offset="30" callback-before="darkenElementFn"
-			   class="pure-button button-white cursorPointer" ng-if="homeCtrl.collection.length>0">My Collection</a>
+			   class="pure-button button-white cursorPointer" ng-show="homeCtrl.collection.length>0">My Collection</a>
 			&nbsp;&nbsp;<a scroll-to="quick-search" offset="30" callback-before="darkenElementFn"
 			   class="pure-button button-white cursorPointer">{{homeCtrl.collection.length>0 ? 'My Collection' : 'Search'}}</a>
 		</p>
@@ -19,7 +19,7 @@
 <div class="content-wrapper">
 	<div class="content">
 		<!-- Slider Directive -->
-		<collection-slider id="quick-collection" slides-to-show="4" slide-pages="3" ng-if="homeCtrl.collection.length>0"></collection-slider>
+		<collection-slider id="quick-collection" slides-to-show="4" slide-pages="3" ng-show="homeCtrl.collection.length>0"></collection-slider>
 		<!--Search Directive -->
 		<search-form id="quick-search" class="homeSearchForm" darken-on-scroll="true" focus-on-input="true"></search-form>
 	</div>
