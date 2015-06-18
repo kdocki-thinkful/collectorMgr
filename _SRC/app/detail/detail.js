@@ -17,6 +17,9 @@ angular.module('cmgrApp.detail', [])
 		this.darkenElement = false;
 		this.showBTT = false;
 
+
+		this.comic = collectionService.getComic($routeParams.id);
+
 		// It's on - Bind to window scroll event
 		// Todo : Throttle call
 		angular.element($window).bind("scroll", function(e) {
@@ -52,6 +55,5 @@ angular.module('cmgrApp.detail', [])
 			}, 500);
 		};
 
-		this.comic = collectionService.getComic($routeParams.id);
 		this.comicHtml = $sce.trustAsHtml(this.comic.description);
 	}]);
