@@ -20,12 +20,14 @@
 	<![endif]-->
 	<!--[if gt IE 8]><!-->
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+	<!--<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">-->
 	<!--<![endif]-->
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/app.css">
+	<!-- HEAD Scripts -->
 	<script src="libsCustom/modernizr.js"></script>
 </head>
-<body>
+<body class="group">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
 	your browser</a> to improve your experience.</p>
@@ -33,29 +35,31 @@
 <header class="header">
 	<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
 		<a class="pure-menu-heading" href="#/"><i class="fa fa-briefcase"></i> CollectorMgr.com</a>
-		<form class="pure-form searchInput">
-			<input type="text" class="pure-input-rounded">
-			<button type="submit" class="pure-button pure-button-primary">Go</button>
-		</form>
 		<ul class="pure-menu-list">
 			<li class="pure-menu-item pure-menu-selected"><a href="#/" class="pure-menu-link">Home</a></li>
 			<li class="pure-menu-item"><a href="#/collection" class="pure-menu-link">Collection</a></li>
+			<li class="pure-menu-item"><a href="#/characters" class="pure-menu-link">Character Wiki</a></li>
 			<li class="pure-menu-item"><a href="#/favorites" class="pure-menu-link">Favorites</a></li>
 		</ul>
 	</div>
 </header>
 <main class="group">
+	<!-- TODO:: Refactor out auto scroll and scroll manually when needed -->
 	<div ng-view autoscroll="true"></div>
-	<!--<div ng-view></div>-->
 </main>
 <footer  class="footer l-box tac">
 	<p>Copyright &#169; CollectorMgr.com | All Rights Reserved</p>
 </footer>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/angular/angular.js"></script>
+<!-- Angular Libs -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
 <script src="bower_components/ngSmoothScroll/angular-smooth-scroll.min.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.js"></script>-->
+<!--My Files -->
 <script src="components/version/version.js"></script>
 <script src="components/version/version-directive.js"></script>
 <script src="components/version/interpolate-filter.js"></script>

@@ -8,6 +8,6 @@ angular.module('cmgrApp.search', ['ngRoute'])
 		});
 	}])
 
-	.controller('SearchCtrl', [function() {
+	.controller('SearchCtrl', ['localStorageService', function(localStorageService) {
 
 	}]);

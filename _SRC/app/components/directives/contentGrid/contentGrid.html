@@ -1,185 +1,31 @@
-<div class="group">
-	<h1 class="fl">Your Collection</h1>
-
-	<div class="fr collectionControls">
-		<ul class="unstyledList inlineList">
-			<li><i class="fa fa-heart"></i></li>
-			<li>
-				<a duration="1000" href="#" scroll-to="addToCollectionSection"><i class="fa fa-plus-square"></i></a>
-			</li>
-			<li><i class="fa fa-minus-square"></i></li>
-		</ul>
-	</div>
-</div>
-<div class="pure-g">
-	<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+<div class="pure-g" ng-show="collection[collection.viewType].length>0">
+	<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4" ng-repeat="comic in collection[collection.viewType]">
 		<div class="comicBox">
 			<h3 class="content-subhead">
 				<i class="fa fa-rocket"></i>
-				Get Started Quickly
+				{{ comic.name }}
 			</h3>
+			<div class="comicPreviewContainer largeComicPreview">
+				<div class="comicPreview" hover-class="flipped">
+					<figure class="front">
+						<img ng-src="{{ comic.image.medium_url || comic.image }}" class="responsiveImage">
+					</figure>
+					<figure class="back">
+						<p>{{ comic.name }}</p>
 
-			<div class="group">
-				<img src="http://placehold.it/350x450" class="pure-img-responsive ">
+						<div>
+							{{ comic.deck | limitTo:200}}
+						</div>
+					</figure>
+				</div>
 			</div>
-			<p>
-				Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-			</p>
-			<ul class="padleft20">
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-			</ul>
-			<button class="pure-button">More</button>
-		</div>
-	</div>
-	<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-		<div class="comicBox">
-			<h3 class="content-subhead">
-				<i class="fa fa-rocket"></i>
-				Get Started Quickly
-			</h3>
-
-			<div class="group">
-				<img src="http://placehold.it/350x450" class="pure-img-responsive ">
-			</div>
-			<p>
-				Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-			</p>
-			<ul class="padleft20">
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-			</ul>
-			<button class="pure-button">More</button>
-		</div>
-	</div>
-	<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-		<div class="comicBox">
-			<h3 class="content-subhead">
-				<i class="fa fa-rocket"></i>
-				Get Started Quickly
-			</h3>
-
-			<div class="group">
-				<img src="http://placehold.it/350x450" class="pure-img-responsive ">
-			</div>
-			<p>
-				Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-			</p>
-			<ul class="padleft20">
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-			</ul>
-			<button class="pure-button">More</button>
-		</div>
-	</div>
-	<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-		<div class="comicBox">
-			<h3 class="content-subhead">
-				<i class="fa fa-rocket"></i>
-				Get Started Quickly
-			</h3>
-
-			<div class="group">
-				<img src="http://placehold.it/350x450" class="pure-img-responsive ">
-			</div>
-			<p>
-				Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-			</p>
-			<ul class="padleft20">
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-			</ul>
-			<button class="pure-button">More</button>
+			<a href="#/comic/{{ comic.id }}" class="pure-button">Detail</a>
+			<button class="pure-button button-error" ng-click="removeFromCollection(comic)">Remove</button>
 		</div>
 	</div>
 </div>
-<div class="pure-g">
-	<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-		<div class="comicBox">
-			<h3 class="content-subhead">
-				<i class="fa fa-rocket"></i>
-				Get Started Quickly
-			</h3>
-
-			<div class="group">
-				<img src="http://placehold.it/350x450" class="pure-img-responsive ">
-			</div>
-			<p>
-				Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-			</p>
-			<ul class="padleft20">
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-			</ul>
-			<button class="pure-button">More</button>
-		</div>
-	</div>
-	<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-		<div class="comicBox">
-			<h3 class="content-subhead">
-				<i class="fa fa-rocket"></i>
-				Get Started Quickly
-			</h3>
-
-			<div class="group">
-				<img src="http://placehold.it/350x450" class="pure-img-responsive ">
-			</div>
-			<p>
-				Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-			</p>
-			<ul class="padleft20">
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-			</ul>
-			<button class="pure-button">More</button>
-		</div>
-	</div>
-	<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-		<div class="comicBox">
-			<h3 class="content-subhead">
-				<i class="fa fa-rocket"></i>
-				Get Started Quickly
-			</h3>
-
-			<div class="group">
-				<img src="http://placehold.it/350x450" class="pure-img-responsive ">
-			</div>
-			<p>
-				Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-			</p>
-			<ul class="padleft20">
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-			</ul>
-			<button class="pure-button">More</button>
-		</div>
-	</div>
-	<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-		<div class="comicBox">
-			<h3 class="content-subhead">
-				<i class="fa fa-rocket"></i>
-				Get Started Quickly
-			</h3>
-
-			<div class="group">
-				<img src="http://placehold.it/350x450" class="pure-img-responsive ">
-			</div>
-			<p>
-				Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-			</p>
-			<ul class="padleft20">
-				<li>Item</li>
-				<li>Item</li>
-				<li>Item</li>
-			</ul>
-			<button class="pure-button">More</button>
-		</div>
-	</div>
+<div ng-show="collection[collection.viewType].length<=0">
+	<h2 ng-if="collection.viewType==='mine'">You Have No Items In Your Collection! <i class="fa fa-frown-o"></i></h2>
+	<h2 ng-if="collection.viewType==='favorites'">You Have No Favorites! <i class="fa fa-frown-o"></i></h2>
+	<h2 ng-if="collection.viewType==='search'">Sorry No Results! <i class="fa fa-frown-o"></i></h2>
 </div>

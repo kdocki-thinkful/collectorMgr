@@ -23,6 +23,9 @@
 	&.searching {
 		min-height: 150px;
 	}
+	.searchResultsLink a {
+		margin: 15px 0;
+	}
 }
 
 .comicPreviewContainer {
@@ -37,6 +40,13 @@
 	-o-perspective: 800px;
 	perspective: 800px;
 	text-align: center;
+
+	&.largeComicPreview {
+		max-width: 350px;
+		max-height: 455px;
+		min-height: 455px;
+		margin: 0 0 15px 0;
+	}
 }
 
 .comicPreview {

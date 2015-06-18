@@ -1,0 +1,35 @@
+<div class="group">
+	<h1 class="fl">{{ collection.viewHeader|| 'Collection' }}</h1>
+
+	<div class="collectionControls">
+		<ul>
+			<li>
+				<button class="pure-button button-small" ng-click=" collection.viewMode='list'"
+						ng-class="{'button-selected': collection.viewMode=='list'}">
+					<i class="fa fa-bars"></i>
+				</button>
+			</li>
+			<li>
+				<button class="pure-button button-small" ng-click=" collection.viewMode='grid'"
+						ng-class="{'button-selected': collection.viewMode=='grid'}">
+					<i class="fa fa-picture-o"></i>
+				</button>
+			</li>
+			<li ng-if=" collection.viewType==='collection'">
+				<button class="pure-button button-small">
+					<i class="fa fa-heart"></i>
+				</button>
+			</li>
+			<li ng-if=" collection.viewType==='collection'">
+				<button class="pure-button button-small" duration="1000" scroll-to="addToCollectionSection">
+					<i class="fa fa-plus-square"></i>
+				</button>
+			</li>
+			<li ng-if=" collection.viewType==='collection'">
+				<button class="pure-button button-small">
+					<i class="fa fa-minus-square"></i>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>

@@ -1,6 +1,10 @@
-<section class="content pure-g">
-	<!-- side bar -->
-	<nav side-bar class="pure-u-1-5 collectionSideBar"></nav>
-	<!-- main grid -->
-	<content-grid class="pure-u-4-5 collectionMain"></content-grid>
+<section class="content">
+	<!-- Content Controls -->
+	<content-controls class="block width100"></content-controls>
+	<div class=" pure-g">
+		<!-- side bar -->
+		<nav side-bar class="pure-u-1-5 collectionSideBar" ng-class="{hidden:collection.viewMode=='grid'}"></nav>
+		<!-- main grid -->
+		<content-grid class="pure-u-5-5 collectionMain" ng-class="{hidden:collection.viewMode=='list'}"></content-grid>
+	</div>
 </section>
