@@ -7,25 +7,22 @@
 		</div>
 
 		<label for="issueName">Issue Name</label>
-		<input id="issueName" name="issueName" type="text" placeholder="Issue Name" required ng-model="addItem.issueName">
+		<input id="issueName" name="issueName" type="text" placeholder="Issue Name" required ng-model="addItem.name">
 
 		<label for="issueNumber">Issue Number</label>
-		<input id="issueNumber" name="issueNumber" type="text" placeholder="Issue Number" required  ng-model="addItem.issueNumber">
+		<input id="issueNumber" name="issueNumber" type="text" placeholder="Issue Number" required  ng-model="addItem.issue_number">
 
 		<label for="issueVolume">Volume</label>
-		<input id="issueVolume" name="issueVolume" type="text" placeholder="Volume"  ng-model="addItem.issueVolume">
+		<input id="issueVolume" name="issueVolume" type="text" placeholder="Volume"  ng-model="addItem.volume">
 
 		<label for="characterName">Character Name</label>
 		<input id="characterName" name="characterName" type="text" placeholder="Character Name" required  ng-model="addItem.characterName">
 
-		<label for="dateAcquired">Date Acquired</label>
-		<input id="dateAcquired" name="dateAcquired" type="date" placeholder="Date Acquired" required  ng-model="addItem.issueName">
+		<label for="dateAcquired">Cover Date</label>
+		<input id="dateAcquired" name="dateAcquired" type="date" placeholder="Date Acquired" required  ng-model="addItem.cover_date">
 
 		<label for="description">Description</label>
 		<textarea id="description" name="description" placeholder="Description"  ng-model="addItem.description"></textarea>
-
-		<label for="issueImage">Image</label>
-		<input id="issueImage" name="issueImage" type="file" placeholder="Image"  ng-model="addItem.issueImage">
 
 		<button type="submit" class="pure-button">Add Item to Collection</button>
 	</fieldset>

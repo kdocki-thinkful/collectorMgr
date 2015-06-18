@@ -1,43 +1,47 @@
 <h2 class="content-head tac"><i class="fa fa-search"></i> Search For Some Items</h2>
-<form class="pure-form" name="searchForm" ng-submit="searchComicVine(searchForm)">
+<form class="pure-form" name="searchForm" ng-submit="search.searchComicVine(searchForm)">
 	<fieldset>
 		<legend class="hidden">Says Search Comic Vine</legend>
 		<div ng-if="searchForm.$submitted && searchForm.$invalid" ng-messages="searchForm.$invalid"
 			 class="errorContainer">
 			<p class="tac">All fields are required!<br>Please try again.</p>
 		</div>
-		<input class="searchFormInput" type="text" placeholder="Search" name="searchString" ng-model="searchString">
+		<input class="searchFormInput" type="text" placeholder="Search" name="searchString"
+			   ng-model="search.searchString" ng-disabled="search.searching">
+
 		<p>Search Type:</p>
 		<label for="searchTypeCharacter" class="pure-radio">
-			<input id="searchTypeAny" type="radio" checked ng-model="searchType" name="searchType"
-				   value="any" ng-disabled="searching">
+			<input id="searchTypeAny" type="radio" checked ng-model="search.type" name="searchType"
+				   value="any" ng-disabled="search.searching">
 			<span>Any</span>
 		</label>
 		<label for="searchTypeCharacter" class="pure-radio">
-			<input id="searchTypeCharacter" type="radio" checked ng-model="searchType" name="searchType"
-				   value="character" ng-disabled="searching">
+			<input id="searchTypeCharacter" type="radio" checked ng-model="search.type" name="searchType"
+				   value="character" ng-disabled="search.searching">
 			<span>Character</span>
 		</label>
 		<label for="searchTypeCharacter" class="pure-radio">
-			<input id="searchTypeIssue" type="radio" ng-model="searchType" name="searchType" value="issue"
-				   ng-disabled="searching">
+			<input id="searchTypeIssue" type="radio" ng-model="search.type" name="searchType" value="issue"
+				   ng-disabled="search.searching">
 			<span>Issue</span>
 		</label>
 
 		<div class="group">
-			<button type="submit" class="pure-button  pure-button-primary" ng-disabled="searching"><i
+			<button type="submit" class="pure-button  button-secondary" ng-disabled="search.searching"><i
 				class="fa fa-search"></i> Search
 			</button>
-			<button type="reset" class="pure-button button-warning" ng-disabled="searching"
-					ng-click="resetForm(searchForm)"><i class="fa fa-times"></i> Reset
+			<button type="reset" class="pure-button button-warning" ng-disabled="search.searching"
+					ng-click="search.resetForm(searchForm)"><i class="fa fa-times"></i> Reset
 			</button>
 		</div>
 	</fieldset>
 </form>
 <hr>
-<div class="group searchResults" ng-class="{searching:searching}">
-	<p ng-if="searchForm.$submitted && searchResults.length==0 && !searching">There are no results!</p>
-	<div ng-if="searching" class="group searchLoader">
+<br>
+<div class="group searchResults" ng-class="{searching:search.searching}">
+	<p ng-if="searchForm.$submitted && search.results.length==0 && !search.searching">There are no results!</p>
+
+	<div ng-if="search.searching" class="group searchLoader">
 		<div class='uil-squares-css' style='-webkit-transform:scale(0.6)'>
 			<div>
 				<div></div>
@@ -65,12 +69,13 @@
 			</div>
 		</div>
 	</div>
-	<div class="pure-g" ng-if="searchResults.length>0">
-		<div class="pure-u-1-3" ng-repeat="comic in searchResults | limitTo:3">
+	<div class="pure-g" ng-if="search.results.length>0" smooth-scroll
+		 scroll-if="{{ search.results.length>0 && !searching}}" duration="800">
+		<div class="pure-u-1-3 tac" ng-repeat="comic in search.results| limitTo:3">
 			<div class="comicPreviewContainer">
 				<div class="comicPreview" hover-class="flipped">
 					<figure class="front">
-						<img src="{{ comic.image.medium_url }}" class="responsiveImage">
+						<img src="{{ comic.image.medium_url }}" class="responsiveImage"/>
 					</figure>
 					<figure class="back">
 						<p>{{ comic.name }}</p>
@@ -81,8 +86,17 @@
 					</figure>
 				</div>
 			</div>
-			<a href="#/comic/{{ comic.id }}" class="pure-button">Read More</a>
+			<a href="#/comic/{{ comic.id }}" class="pure-button whtLnk"><i class="fa fa-share-square-o"></i> Detail</a>
+			<button ng-click="search.addToCollection(comic)" class="pure-button button-green"><i class="fa fa-database"></i>
+				Add
+			</button>
 		</div>
 	</div>
-	<p ng-if="searchResults.length>3 && !searching"><a href="#/results" class="pure-button">View All Results</a></p>
+	<br>
+
+	<div ng-if="searchForm.$submitted && search.results.length>3 && !search.searching" class="searchResultsLink">
+		<hr/>
+		<a href="#/search" class="pure-button button-large button-success">View All Results</a>
+		<hr/>
+	</div>
 </div>

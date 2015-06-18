@@ -59,6 +59,7 @@ gCfg.sources = {
 		gCfg.getSrcDir('collection/**/*.html'),
 		gCfg.getSrcDir('favorites/**/*.html'),
 		gCfg.getSrcDir('detail/**/*.html'),
+		gCfg.getSrcDir('search/**/*.html'),
 		gCfg.getSrcDir('components/directives/**/*.html')
 	],
 	// Files to Copy source path vars

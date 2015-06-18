@@ -1,8 +1,9 @@
+@import "_variables";
 /*
  * -- BASE STYLES --
  */
 
-* {
+html {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -10,6 +11,7 @@
 
 
 body {
+	box-sizing: inherit;
 	font-family: 'Ubuntu', sans-serif;
 	line-height: 1.7em;
 	color: #7f8c8d;
@@ -24,4 +26,15 @@ h5,
 h6,
 label {
 	color: #34495e;
+}
+
+a,
+a:hover,
+a:visited,
+a:active {
+	color: @blue;
+
+	&.whtLnk {
+		color: #fff;
+	}
 }
